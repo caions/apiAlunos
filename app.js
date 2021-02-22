@@ -1,5 +1,5 @@
 const app = require("./server")
+var aluno = require('./routes');
 
-app.get("/",(req,res)=>{
-    res.send("Gloria a Deus")
-})
+app.use('/aluno', aluno);
+app.post("/aluno",aluno)
