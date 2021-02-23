@@ -69,3 +69,11 @@ Exemplo filtrando notas entre 6 e 10:
 No arquivo raiz execute `npm install` para baixar as dependências
 
 Em seguida execute `npm start` para rodar a aplicação
+
+rota 1 Adicionar
+
+`localhost:8090/aluno/add`
+
+rota 2 Listar
+
+`localhost:8090/aluno/list`
