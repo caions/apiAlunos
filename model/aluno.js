@@ -18,7 +18,7 @@ const AlunoSchema = new Schema({
     media: {
         type: Number
     },
-    status: {
+    aprovado: {
         type: Boolean
     }
 }, { collection: 'Alunos' });

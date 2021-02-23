@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router();
 
 const AlunoController = require("./controllers/AlunoController");
-// LIST
+// rotas aluno
 router.post('/list', AlunoController.index);
 router.post('/add', AlunoController.store);
 

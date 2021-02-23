@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const mongoose = require('mongoose')
 
-const PORT = process.env.PORT || 8090;
+const PORT =  8090;
 
 mongoose.connect('mongodb+srv://transitar:senhaTransitar@cluster0.4kq1d.mongodb.net/transitarDb?retryWrites=true&w=majority', {
   useCreateIndex: true,
@@ -10,6 +10,7 @@ mongoose.connect('mongodb+srv://transitar:senhaTransitar@cluster0.4kq1d.mongodb.
   useUnifiedTopology: true
 })
 
+// habilitando Json
 app.use(express.json());
 
 //rodando o servidor
