@@ -14,7 +14,7 @@ mongoose.connect('mongodb+srv://transitar:senhaTransitar@cluster0.4kq1d.mongodb.
 app.use(express.json());
 
 //rodando o servidor
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`))
+app.listen(PORT, () => console.log(`Servidor rodando na rota localhost:${PORT}`))
 
 module.exports = app
 
