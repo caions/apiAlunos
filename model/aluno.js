@@ -2,21 +2,24 @@ const { Schema, model } = require('mongoose')
 
 const AlunoSchema = new Schema({
     matricula: {
-        type: Object,
+        type: Number,
         required: true,
     },
     nome: {
         type: String,
         required: true
     },
-    nota1: {
+    idade: {
+        type: String
+    },
+    notas: {
+        type: Array
+    },
+    media: {
         type: Number
     },
-    nota2: {
-        type: Number
-    },
-    nota3: {
-        type: Number
+    status: {
+        type: Boolean
     }
 }, { collection: 'Alunos' });
 

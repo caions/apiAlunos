@@ -1,44 +1,53 @@
 const Aluno = require('../model/Aluno')
-const conexao = require("../db/dbConnection")
-const mongoose = require("mongoose")
 
-//CREATE
-const addAluno = async (aluno) => {
 
-    try {
-        let novoAluno = {
-            matricula: aluno.matricula,
-            nome: aluno.nome,
-            nota: aluno.nota
+class AlunoController {
+
+    async index(req, res) {
+        let filters = {}
+
+        if (req.body.idade) {
+            filters = { ...filters, idade: req.body.idade }
         }
-        await conexao.then(() => {
-            const modelInstance = new Aluno(novoAluno);
-            return modelInstance.save().then(console.log("aluno salvo com sucesso"))
-        })
-        mongoose.connection.close()
 
+        if (req.body.status) {
+            filters = { ...filters, status: req.body.status }
+        }
+
+        if (req.body.media) {
+            filters = { ...filters, $and: [{ media: { $gte: req.body.media[0] } }, { media: { $lte: req.body.media[1] } }] }
+        }
+        console.log(filters)
+
+        //{ $and: [{ media: { $gte: 5 } }, { media: { $lte: 8 } }] }
+
+        //intervalo media > 5
+
+        const alunos = await Aluno.find(filters);
+        return res.json(alunos)
     }
-    catch (error) {
-        console.log(error)
+
+    async store(req, res) {
+        console.log(req.body)
+        const { nome, notas, matricula, idade } = req.body;
+
+        const somaNotas = notas.reduce((acc, current) => acc + current);
+        const media = (somaNotas / notas.length).toFixed(1);
+        const status = media >= 7 ? true : false;
+
+
+        const aluno = await Aluno.create({
+            nome,
+            notas,
+            matricula,
+            idade,
+            media,
+            status
+        });
+
+        return res.json(aluno);
     }
 }
 
-// List
-const listAluno = async () => {
-
-    try {
-        await conexao
-        return await Aluno.find()
-
-    }
-    catch (error) {
-        console.log(error)
-    }
-}
-
-module.exports = {
-    addAluno,
-    listAluno
-}
-
+module.exports = new AlunoController();
 
