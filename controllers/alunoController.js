@@ -5,6 +5,14 @@ class AlunoController {
     async index(req, res) {
         let filters = {}
 
+        if (req.body.matricula) {
+            filters = { ...filters, matricula: req.body.matricula }
+        }
+        
+        if (req.body.nome) {
+            filters = { ...filters, nome: req.body.nome }
+        }
+
         if (req.body.idade) {
             filters = { ...filters, idade: req.body.idade }
         }
@@ -42,4 +50,3 @@ class AlunoController {
 }
 
 module.exports = new AlunoController();
-
