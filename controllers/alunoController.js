@@ -1,14 +1,15 @@
 const Aluno = require('../model/Aluno')
 
 class AlunoController {
-
+    //READ
     async index(req, res) {
         let filters = {}
+        // Adiciona o parametro ao objeto "filter" caso solicitado na requisicao
 
         if (req.body.matricula) {
             filters = { ...filters, matricula: req.body.matricula }
         }
-        
+
         if (req.body.nome) {
             filters = { ...filters, nome: req.body.nome }
         }
@@ -29,23 +30,37 @@ class AlunoController {
         return res.json(alunos)
     }
 
+    //CREATE
     async store(req, res) {
-        const { matricula, nome, idade, notas } = req.body;
+        try {
+            const { matricula, nome, idade, notas } = req.body;
 
-        const somaNotas = notas.reduce((acc, current) => acc + current);
-        const media = (somaNotas / notas.length).toFixed(1);
-        const aprovado = media >= 7 ? true : false;
+            // soma cada elemento no array de notas e divide pelo tamanho do array
+            const somaNotas = notas.reduce((acc, current) => acc + current);
+            const media = (somaNotas / notas.length).toFixed(1);
+            const aprovado = media >= 7 ? true : false;
 
-        const aluno = await Aluno.create({
-            matricula,
-            nome,
-            idade,
-            notas,
-            media,
-            aprovado
-        });
+            const aluno = await Aluno.create({
+                matricula,
+                nome,
+                idade,
+                notas,
+                media,
+                aprovado
+            })
 
-        return res.json(aluno);
+            return res.json(aluno);
+
+        } catch (error) {
+            // Retorna um erro caso a matricula ja exista no banco
+            if (error.keyValue) {
+                return res.status(400).json("Matricula duplicada! Escolha um numero de matricula diferente.")
+            }
+            // Retorna um erro caso nao seja passado os parametros obrigatorios matricula e nome
+            else if (error) {
+                return res.status(400).json(error.message)
+            }
+        }
     }
 }
 

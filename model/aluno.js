@@ -4,6 +4,7 @@ const AlunoSchema = new Schema({
     matricula: {
         type: Number,
         required: true,
+        unique : true
     },
     nome: {
         type: String,

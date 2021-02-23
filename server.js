@@ -10,7 +10,7 @@ mongoose.connect('mongodb+srv://transitar:senhaTransitar@cluster0.4kq1d.mongodb.
   useUnifiedTopology: true
 })
 
-// habilitando Json
+// habilita requisicoes via JSON
 app.use(express.json());
 
 //rodando o servidor
