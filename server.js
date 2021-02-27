@@ -1,6 +1,15 @@
 const express = require("express")
 const app = express()
 const mongoose = require('mongoose')
+var cors = require('cors');
+
+app.use(
+    cors({
+        credentials: true,
+        origin: true
+    })
+);
+app.options('*', cors());
 
 const PORT =  8090;
 
