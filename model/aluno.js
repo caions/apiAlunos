@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose')
 
 const AlunoSchema = new Schema({
     matricula: {
-        type: Number,
+        type: Number, 
         required: true,
         unique : true
     },
