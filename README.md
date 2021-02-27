@@ -71,9 +71,9 @@ No arquivo raiz execute `npm install` para baixar as dependências
 Em seguida execute `npm start` para rodar a aplicação
 
 rota 1 Adicionar
-
+ `https://api-alunos-caio.herokuapp.com/aluno/add`
 `localhost:8090/aluno/add`
 
 rota 2 Listar
-
+ `https://api-alunos-caio.herokuapp.com/aluno/list`
 `localhost:8090/aluno/list`
