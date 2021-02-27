@@ -1,4 +1,4 @@
-const Aluno = require('../model/aluno.js')
+const Aluno = require('../model/aluno.js') 
  
 class AlunoController {
     //READ
