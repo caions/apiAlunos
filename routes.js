@@ -6,4 +6,4 @@ const AlunoController = require("./controllers/AlunoController");
 router.post('/list', AlunoController.index);
 router.post('/add', AlunoController.store);
 
-module.exports = router
+module.exports = router 
