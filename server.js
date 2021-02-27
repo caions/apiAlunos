@@ -11,7 +11,8 @@ app.use(
 );
 app.options('*', cors());
 
-const PORT =  8090;
+const PORT = process.env.PORT || 8090
+;
 
 mongoose.connect('mongodb+srv://transitar:senhaTransitar@cluster0.4kq1d.mongodb.net/transitarDb?retryWrites=true&w=majority', {
   useCreateIndex: true,
