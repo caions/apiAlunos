@@ -1,6 +1,6 @@
 const express = require("express")
 const AlunoController = require("./controllers/alunoController");
-const router = express.Router();
+const router = express.Router(); 
 
 // rotas aluno
 router.post('/list', AlunoController.index);
