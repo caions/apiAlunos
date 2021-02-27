@@ -1,5 +1,5 @@
 const Aluno = require('../model/aluno.js')
-
+ 
 class AlunoController {
     //READ
     async index(req, res) {
