@@ -1,5 +1,5 @@
 const app = require("./server")
-const alunoRouter = require('./routes');
+const alunoRouter = require('./routes/alunos');
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
@@ -18,7 +18,7 @@ const options = {
         }
     },
     // ['.routes/*.js']
-    apis: ['./routes.js']
+    apis: ['./routes/*.js']
 };
 
 const swaggerSpec = swaggerJsDoc(options);

@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router(); 
-const {index,store} = require("./controllers/alunoController");
+const {index,store} = require("../controllers/alunoController");
 
 /**
  * @swagger
