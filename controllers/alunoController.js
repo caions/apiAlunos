@@ -1,5 +1,5 @@
-const Aluno = require('../model/aluno.js') 
- 
+const Aluno = require('../model/aluno.js')
+
 class AlunoController {
     //READ
     async index(req, res) {
@@ -60,6 +60,16 @@ class AlunoController {
             else if (error) {
                 return res.status(400).json(error.message)
             }
+        }
+    }
+
+    async remove(req, res) {
+        try {
+            let aluno = await Aluno.findOne({ nome: req.query.nome })
+            await Aluno.deleteOne({ nome: aluno.nome });
+            return res.status(200).json(teste.nome +" removido(a) do banco de alunos")
+        } catch (error) {
+            return res.status(400).json(error.message)
         }
     }
 }

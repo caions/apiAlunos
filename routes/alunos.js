@@ -1,25 +1,28 @@
 const express = require("express")
 const router = express.Router(); 
-const {index,store} = require("../controllers/alunoController");
+const {index,store,remove} = require("../controllers/alunoController");
 
 /**
  * @swagger
  * /aluno/list:
- *    post:
- *      description: Use to return all customers
- *    parameters:
- *      - name: customer
- *        in: query
- *        description: Name of our customer
- *        required: false
- *        schema:
- *          type: string
- *          format: string
- *    responses:
- *      '201':
- *        description: Successfully created user
+ *  post:
+ *     description: Retorna todos os Alunos
+ *     responses:
+ *      '200':
+ *        description: Todos os alunos
  */
 router.post('/list', index);
+
+/**
+ * @swagger
+ * /aluno/add:
+ *  post:
+ *     description: Retorna todos os Alunos
+ *     responses:
+ *      '200':
+ *        description: Todos os alunos
+ */
 router.post('/add', store);
+router.post('/delete', remove);
 
 module.exports = router 

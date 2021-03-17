@@ -5,18 +5,17 @@ const swaggerUi = require("swagger-ui-express");
 
 // Extended: https://swagger.io/specification/#infoObject
 const options = {
-    swaggerDefinition: {
-        openapi: '3.0.0',
+    definition: {
         info: {
-            version: "1.0.0",
-            title: "Customer API",
-            description: "Customer API Information",
-            contact: {
-                name: "Caio Nascimento"
-            },
-            servers: ["http://localhost:8090/aluno"]
+          version: "1.0.0",
+          title: "Alunos API",
+          description: "Alunos API Information",
+          contact: {
+            name: "Amazing Developer"
+          },
+          url: ["http://localhost:8090/"]
         }
-    },
+      },
     // ['.routes/*.js']
     apis: ['./routes/*.js']
 };
