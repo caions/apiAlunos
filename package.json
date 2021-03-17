@@ -7,13 +7,16 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js",
+    "start-gendoc": "node swagger.js"
   },
   "author": "Caio Nascimento",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "4.17.1",
-    "mongoose": "5.11.15"
+    "mongoose": "5.11.15",
+    "swagger-autogen": "^2.7.1",
+    "swagger-ui-express": "^4.1.6"
   }
 }
