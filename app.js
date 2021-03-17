@@ -1,7 +1,9 @@
 const app = require("./server")
-const alunoRouter = require('./routes/alunos');
-const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
+const aluno = require('./routes');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger_output.json');
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Extended: https://swagger.io/specification/#infoObject
 const options = {

@@ -49,7 +49,7 @@ class AlunoController {
                 aprovado
             })
 
-            return res.json(aluno);
+            return res.status(200).json(aluno);
 
         } catch (error) {
             // Retorna um erro caso a matricula ja exista no banco
@@ -63,12 +63,14 @@ class AlunoController {
         }
     }
 
-    async remove(req, res) {
-        try {
-            let aluno = await Aluno.findOne({ nome: req.query.nome })
-            await Aluno.deleteOne({ nome: aluno.nome });
-            return res.status(200).json(aluno.nome +" removido(a) do banco de alunos")
-        } catch (error) {
+    async remove(req,res){
+        try{
+            const alunoMatricula = await Aluno.findOne({matricula: req.query.matricula})
+            console.log(alunoMatricula)
+            await Aluno.deleteOne({matricula:alunoMatricula.matricula})
+
+            return res.status(200).json(`${alunoMatricula.nome} removido`)
+        }catch(error){
             return res.status(400).json(error.message)
         }
     }
