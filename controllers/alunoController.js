@@ -1,33 +1,35 @@
 const Aluno = require('../model/aluno.js')
-
+const logger = require('../utils/logger')
 class AlunoController {
     //READ
     async index(req, res) {
+         // Adiciona o parametro ao objeto "filter" caso solicitado na requisicao
         let filters = {}
-        // Adiciona o parametro ao objeto "filter" caso solicitado na requisicao
-
-        if (req.body.matricula) {
-            filters = { ...filters, matricula: req.body.matricula }
-        }
-
-        if (req.body.nome) {
-            filters = { ...filters, nome: req.body.nome }
-        }
-
-        if (req.body.idade) {
-            filters = { ...filters, idade: req.body.idade }
-        }
-
-        if (req.body.aprovado) {
-            filters = { ...filters, aprovado: req.body.aprovado }
-        }
-
-        if (req.body.media) {
-            filters = { ...filters, $and: [{ media: { $gte: req.body.media[0] } }, { media: { $lte: req.body.media[1] } }] }
-        }
-
-        const alunos = await Aluno.find(filters);
-        return res.json(alunos)
+        try{
+            if (req.body.matricula) {
+                filters = { ...filters, matricula: req.body.matricula }
+            }
+    
+            if (req.body.nome) {
+                filters = { ...filters, nome: req.body.nome }
+            }
+    
+            if (req.body.idade) {
+                filters = { ...filters, idade: req.body.idade }
+            }
+    
+            if (req.body.aprovado) {
+                filters = { ...filters, aprovado: req.body.aprovado }
+            }
+    
+            if (req.body.media) {
+                filters = { ...filters, $and: [{ media: { $gte: req.body.media[0] } }, { media: { $lte: req.body.media[1] } }] }
+            }
+            const alunos = await Aluno.find(filters);
+            return res.json(alunos)
+            }catch(error){
+                logger.error(error)
+            }
     }
 
     //CREATE
@@ -54,10 +56,12 @@ class AlunoController {
         } catch (error) {
             // Retorna um erro caso a matricula ja exista no banco
             if (error.keyValue) {
+                logger.error(error)
                 return res.status(400).json("Matricula duplicada! Escolha um numero de matricula diferente.")
             }
             // Retorna um erro caso nao seja passado os parametros obrigatorios matricula e nome
             else if (error) {
+                logger.error(error.message)
                 return res.status(400).json(error.message)
             }
         }

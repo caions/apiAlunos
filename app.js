@@ -5,6 +5,5 @@ const swaggerDocument = require('./swagger_output.json');
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-
 app.get("/", (req, res) => res.send("Gloria a Deus"))
-app.use('/aluno', aluno); 
+app.use('/aluno', aluno);

@@ -1,0 +1,7 @@
+21-03-2021 22:47:52 [error] undefined: E11000 duplicate key error collection: transitarDb.Alunos index: matricula_1 dup key: { matricula: 212 } Method: undefined undefined undefined
+21-03-2021 22:49:49 [undefined] error: E11000 duplicate key error collection: transitarDb.Alunos index: matricula_1 dup key: { matricula: 212 }
+21-03-2021 22:51:10 [undefined] error: undefined
+21-03-2021 22:52:29 [undefined] error: E11000 duplicate key error collection: transitarDb.Alunos index: matricula_1 dup key: { matricula: 212 }
+undefined
+undefined
+undefined
