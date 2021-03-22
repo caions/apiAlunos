@@ -7,7 +7,7 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "start": "nodemon app.js && node utils/logger.js",
+    "start": "node app.js",
     "start-gendoc": "node swagger.js"
   },
   "author": "Caio Nascimento",
